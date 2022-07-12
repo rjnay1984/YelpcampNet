@@ -5,12 +5,12 @@ namespace YelpcampNet.Infrastructure;
 
 public class AppIdentityDbContext : IdentityDbContext<ApplicationUser>
 {
-  public AppIdentityDbContext(DbContextOptions options) : base(options)
-  {
-  }
+    public AppIdentityDbContext(DbContextOptions options) : base(options)
+    {
+    }
 
-  protected override void OnModelCreating(ModelBuilder builder)
-  {
-    base.OnModelCreating(builder);
-  }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+    }
 }
