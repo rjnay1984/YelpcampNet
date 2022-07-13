@@ -8,7 +8,7 @@ public static class Dependencies
 {
     public static void ConfigureServices(IConfiguration configuration, IServiceCollection services)
     {
-        services.AddDbContext<AppIdentityDbContext>(c => 
-            c.UseNpgsql(configuration.GetConnectionString("IdentityConnection")));
+        services.AddDbContext<AppIdentityDbContext>(options => 
+            options.UseNpgsql(configuration.GetConnectionString("IdentityConnection")));
     }
 }
