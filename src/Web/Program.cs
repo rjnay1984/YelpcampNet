@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
-using YelpcampNet.Infrastructure;
 using YelpcampNet.Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);

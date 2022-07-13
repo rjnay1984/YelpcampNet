@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace YelpcampNet.Infrastructure;
+namespace YelpcampNet.Infrastructure.Identity;
 
 public class ApplicationUser : IdentityUser 
 {

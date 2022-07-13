@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace YelpcampNet.Infrastructure;
+namespace YelpcampNet.Infrastructure.Identity;
 
 public class AppIdentityDbContext : IdentityDbContext<ApplicationUser>
 {
