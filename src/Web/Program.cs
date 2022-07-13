@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using YelpcampNet.Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
 YelpcampNet.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 
 builder.Services.AddRazorPages(options => 
@@ -41,6 +42,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
