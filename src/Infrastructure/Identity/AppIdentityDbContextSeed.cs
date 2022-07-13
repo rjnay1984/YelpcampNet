@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,14 +12,18 @@ namespace YelpcampNet.Infrastructure.Identity
             identityDbContext.Database.Migrate();
 
             await roleManager.CreateAsync(new IdentityRole("Admin"));
+            await roleManager.CreateAsync(new IdentityRole("User"));
 
+            var defaultUserName = "rjnay1984@gmail.com";
             var defaultUser = new ApplicationUser 
             {
-                UserName = "rjnay1984@gmail.com",
-                Email = "rjnay1984@gmail.com",
+                UserName = defaultUserName,
+                Email = defaultUserName,
                 EmailConfirmed = true,
             };
             await userManager.CreateAsync(defaultUser, "P@ssw0rd");
+            defaultUser = await userManager.FindByNameAsync(defaultUserName);
+            await userManager.AddToRoleAsync(defaultUser, "User");
 
             var adminUserName = "admin@yelpcamp.com";
             var adminUser = new ApplicationUser 
