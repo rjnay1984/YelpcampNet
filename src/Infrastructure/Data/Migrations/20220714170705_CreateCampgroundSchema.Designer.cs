@@ -12,7 +12,7 @@ using YelpcampNet.Infrastructure.Data;
 namespace YelpcampNet.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220714150643_CreateCampgroundSchema")]
+    [Migration("20220714170705_CreateCampgroundSchema")]
     partial class CreateCampgroundSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
