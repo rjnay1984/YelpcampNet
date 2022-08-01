@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
+using YelpcampNet.Infrastructure.Data;
 using YelpcampNet.Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 YelpcampNet.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 
-builder.Services.AddRazorPages(options => 
+builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizePage("/Protected");
 });
@@ -25,8 +26,11 @@ using (var scope = app.Services.CreateScope())
         var roleManager = scopedProvider.GetRequiredService<RoleManager<IdentityRole>>();
         var identityContext = scopedProvider.GetRequiredService<AppIdentityDbContext>();
         await AppIdentityDbContextSeed.SeedAsync(identityContext, userManager, roleManager);
+
+        var appContext = scopedProvider.GetRequiredService<AppDbContext>();
+        await AppDbContextSeed.SeedAsync(appContext, userManager);
     }
-    catch(Exception ex)
+    catch (Exception ex)
     {
         app.Logger.LogError(ex, "An error occured seeding the db.");
     }
@@ -42,7 +46,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication();;
+app.UseAuthentication(); ;
 
 app.UseAuthorization();
 
