@@ -12,6 +12,6 @@ namespace YelpcampNet.ApplicationCore.Entities
         public int CampgroundId { get; set; }
         [Required]
         public Campground Campground { get; set; }
-        // public string UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace YelpcampNet.ApplicationCore.Entities
         public string? Teaser { get; set; }
         public string? Description { get; set; }
         public List<Comment> Comments { get; set; }
-        // public string UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

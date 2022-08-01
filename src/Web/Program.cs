@@ -28,7 +28,7 @@ using (var scope = app.Services.CreateScope())
         await AppIdentityDbContextSeed.SeedAsync(identityContext, userManager, roleManager);
 
         var appContext = scopedProvider.GetRequiredService<AppDbContext>();
-        await AppDbContextSeed.SeedAsync(appContext);
+        await AppDbContextSeed.SeedAsync(appContext, userManager);
     }
     catch (Exception ex)
     {

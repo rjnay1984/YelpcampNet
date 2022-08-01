@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using YelpcampNet.ApplicationCore.Constants;
 
 namespace YelpcampNet.Infrastructure.Identity
 {
@@ -11,13 +12,13 @@ namespace YelpcampNet.Infrastructure.Identity
         {
             identityDbContext.Database.Migrate();
 
-            await roleManager.CreateAsync(new IdentityRole("Admin"));
-            await roleManager.CreateAsync(new IdentityRole("CampManager"));
-            await roleManager.CreateAsync(new IdentityRole("User"));
+            await roleManager.CreateAsync(new IdentityRole(IdentityConstants.ADMIN_USER_ROLE));
+            await roleManager.CreateAsync(new IdentityRole(IdentityConstants.CAMPGROUND_MANAGER_ROLE));
+            await roleManager.CreateAsync(new IdentityRole(IdentityConstants.CAMPGROUND_USER_ROLE));
 
-            var password = "P@ssw0rd";
+            var password = IdentityConstants.DEFAULT_PASSWORD;
 
-            var defaultUserName = "rjnay1984@gmail.com";
+            var defaultUserName = IdentityConstants.CAMPGROUND_USER;
             var defaultUser = new ApplicationUser
             {
                 UserName = defaultUserName,
@@ -26,9 +27,9 @@ namespace YelpcampNet.Infrastructure.Identity
             };
             await userManager.CreateAsync(defaultUser, password);
             defaultUser = await userManager.FindByNameAsync(defaultUserName);
-            await userManager.AddToRoleAsync(defaultUser, "User");
+            await userManager.AddToRoleAsync(defaultUser, IdentityConstants.CAMPGROUND_USER_ROLE);
 
-            var campManagerUserName = "campmanager1@yelpcamp.com";
+            var campManagerUserName = IdentityConstants.CAMPGROUND_MANAGER;
             var campManagerUser = new ApplicationUser
             {
                 UserName = campManagerUserName,
@@ -37,9 +38,9 @@ namespace YelpcampNet.Infrastructure.Identity
             };
             await userManager.CreateAsync(campManagerUser, password);
             campManagerUser = await userManager.FindByNameAsync(campManagerUserName);
-            await userManager.AddToRoleAsync(campManagerUser, "CampManager");
+            await userManager.AddToRoleAsync(campManagerUser, IdentityConstants.CAMPGROUND_MANAGER_ROLE);
 
-            var adminUserName = "admin@yelpcamp.com";
+            var adminUserName = IdentityConstants.ADMIN_USER;
             var adminUser = new ApplicationUser
             {
                 UserName = adminUserName,
@@ -48,7 +49,7 @@ namespace YelpcampNet.Infrastructure.Identity
             };
             await userManager.CreateAsync(adminUser, password);
             adminUser = await userManager.FindByNameAsync(adminUserName);
-            await userManager.AddToRoleAsync(adminUser, "Admin");
+            await userManager.AddToRoleAsync(adminUser, IdentityConstants.ADMIN_USER_ROLE);
         }
     }
 }
