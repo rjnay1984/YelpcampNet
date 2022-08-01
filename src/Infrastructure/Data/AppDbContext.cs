@@ -9,6 +9,7 @@ namespace YelpcampNet.Infrastructure.Data
         { }
 
         public DbSet<Campground> Campgrounds { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
